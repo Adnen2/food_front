@@ -1,0 +1,63 @@
+/* Your component styles */
+.my-custom-table {
+    width: 100%;
+    max-width: 800px; /* Adjust the maximum width as needed */
+    margin: auto; /* Center the table on the page */
+  }
+  
+  .my-custom-row {
+    transition: background-color 0.3s; /* Add a smooth background color transition */
+  }
+  
+  /* Animation definition */
+  @keyframes fadeInOut {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Container for the button and search bar */
+
+  
+  /* Style for the "Nouveau Produit" button */
+  .btn-success {
+    background-color: #28a745; /* Green background color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 15px; /* Adjust padding as needed */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer;
+    margin-right: 10px; /* Add some space between the button and the search bar */
+  }
+  
+  /* Hover effect for the button */
+  .btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  /* Style for the search input */
+  mat-form-field {
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Adjust the appearance of the input field */
+  input {
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 8px; /* Adjust padding as needed */
+    transition: border-color 0.3s; /* Add a smooth transition for the border color */
+  }
+  
+  /* Adjust the border color on focus */
+  input {
+    outline: none; /* Remove the default focus outline */
+    border-color: #007bff; /* Set a blue border color on focus */
+  }
+  

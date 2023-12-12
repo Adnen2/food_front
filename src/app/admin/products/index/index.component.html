@@ -1,0 +1,76 @@
+<div class="container">
+  <h2>All Foods</h2>
+  
+    <app-create></app-create><span style="padding: 50px;"></span>
+  <input matInput (keyup)="filter($event)" placeholder="Rechercher">
+
+  <table mat-table [dataSource]="foods" class="mat-elevation-z8" #mytable matSort>
+    <!-- Image column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let food">
+        <img src="{{ food.imageUrl }}" alt="" width="80" height="80" />
+      </td>
+    </ng-container>
+
+    <!-- Name column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let food">{{ food.name }}</td>
+    </ng-container>
+
+    <!-- Price column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let food">{{ food.price }}</td>
+    </ng-container>
+
+    <!-- Tags column -->
+    <ng-container matColumnDef="tags">
+      <th mat-header-cell *matHeaderCellDef>Tags</th>
+      <td mat-cell *matCellDef="let food">{{ food.tags }}</td>
+    </ng-container>
+
+    <!-- Favorite column -->
+    <ng-container matColumnDef="favorite">
+      <th mat-header-cell *matHeaderCellDef>Favorite</th>
+      <td mat-cell *matCellDef="let food">{{ food.favorite }}</td>
+    </ng-container>
+
+    <!-- Stars column -->
+    <ng-container matColumnDef="stars">
+      <th mat-header-cell *matHeaderCellDef >Stars</th>
+      <td mat-cell *matCellDef="let food">{{ food.stars }}</td>
+    </ng-container>
+
+    <!-- Origins column -->
+    <ng-container matColumnDef="origins">
+      <th mat-header-cell *matHeaderCellDef>Origins</th>
+      <td mat-cell *matCellDef="let food">{{ food.origins }}</td>
+    </ng-container>
+
+    <!-- CookTime column -->
+    <ng-container matColumnDef="cookTime">
+      <th mat-header-cell *matHeaderCellDef>Cook Time</th>
+      <td mat-cell *matCellDef="let food">{{ food.cookTime }}</td>
+    </ng-container>
+
+    <!-- Actions column -->
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let food">
+        <app-view [foodId]="food._id"></app-view>
+        <app-edit [foodId]="food._id"></app-edit>
+        <button type="button" (click)="deleteFood(food._id)" class="btn btn-light">
+          <i class="bi bi-trash-fill" style="color:red"></i>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Row definitions -->
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 
+20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+<button class="btn btn-info" (click)="openModal()">
+    <i class="bi bi-info-square-fill"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': display}">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail Food</h4>
+                <button type="button" class="btn btn-light" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <template *ngTemplateOutlet="cardFood"></template>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card -->
+<ng-template #cardFood>
+    <div class="card">
+        <img [src]="foods.imageUrl" class="card-img-top" alt="{{foods.name}}">
+        <div class="card-body">
+            <p class="card-text"><strong>Reference:</strong> {{foods._id}}</p>
+            <h5 class="card-title">{{foods.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{foods.price}} $</h6>
+            <p class="card-text"><strong>Origins:</strong> {{foods.origins}}</p>
+            <p class="card-text"><strong>Cook Time:</strong> {{foods.cookTime}}</p>
+        </div>
+    </div>
+</ng-template>

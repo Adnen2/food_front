@@ -1,0 +1,78 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" (click)="openModal()">
+    <i class="bi bi-plus-circle-fill"></i>
+    New Food
+</button>
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Food</h4>
+                <button type="button" class="btn btn-default" aria-label="Close" (click)="closeModal()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <template *ngTemplateOutlet="formFood"></template>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Form -->
+<ng-template #formFood>
+    <form (ngSubmit)="ajoutArticle()">
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control" placeholder="Name"
+                [(ngModel)]="foods.name">
+        </div>
+        <div class="mb-3">
+            <label for="price">Price</label>
+            <input type="number" id="price" formControlName="price" class="form-control" placeholder="Price"
+                [(ngModel)]="foods.price">
+        </div>
+        <div class="mb-3">
+            <label for="tags">Tags</label>
+            <input type="text" id="tags" formControlName="tags" class="form-control" placeholder="Tags"
+                [(ngModel)]="foods.tags">
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                <input type="checkbox" id="favorite" formControlName="favorite" class="form-check-input"
+                    [(ngModel)]="foods.favorite">
+                <label class="form-check-label" for="favorite">Favorite</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="stars">Stars</label>
+            <input type="number" id="stars" formControlName="stars" class="form-control" placeholder="Stars"
+                [(ngModel)]="foods.stars">
+        </div>
+        
+        <div class="mb-3">
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+            <button type="button" (click)="fileInput.click()">Selectionner
+                image</button>
+            <input type="text" readonly class="form-control" id="imageUrl" name="imageUrl" [(ngModel)]="foods.imageUrl">
+            <div *ngIf="foods.imageUrl!=null"> <img src="{{foods.imageUrl}}" width="450" height="200" /></div>
+        </div>
+        <div class="mb-3">
+            <label for="origins">Origins</label>
+            <input type="text" id="origins" formControlName="origins" class="form-control" placeholder="Origins"
+                [(ngModel)]="foods.origins">
+        </div>
+        <div class="mb-3">
+            <label for="cookTime">Cook Time</label>
+            <input type="text" id="cookTime" formControlName="cookTime" class="form-control" placeholder="Cook Time"
+                [(ngModel)]="foods.cookTime">
+        </div>
+        <!-- Add more form controls for other properties -->
+
+        <div>
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+    </form>
+</ng-template>
